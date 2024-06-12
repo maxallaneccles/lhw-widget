@@ -3,24 +3,32 @@
   style.textContent = `
     .lhw-widget-button {
       position: fixed;
-      right: 10px;
+      right: 0;
       top: 50%;
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 5px;
       z-index: 2147483647; /* Maximum z-index value */
     }
     .lhw-widget-button button {
-      background-color: #4CAF50;
-      color: white;
+      background-color: white;
+      color: #4CAF50;
       border: none;
-      padding: 10px;
-      border-radius: 5px;
+      padding: 0;
+      margin: 0;
+      width: 40px;
+      height: 100px;
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       writing-mode: vertical-rl;
-      text-orientation: mixed;
+      text-orientation: upright;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      border-left: 2px solid #4CAF50;
     }
     .lhw-popup {
       display: none;
@@ -115,11 +123,11 @@
     popupTitle.textContent = title;
     popupInput.value = '';
     popup.classList.add('active');
-    document.body.classList.add('lhw-blur');
+    document.getElementById('main-content').classList.add('lhw-blur');
   }
 
   function closePopup() {
     popup.classList.remove('active');
-    document.body.classList.remove('lhw-blur');
+    document.getElementById('main-content').classList.remove('lhw-blur');
   }
 })();
