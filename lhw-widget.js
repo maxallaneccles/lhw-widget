@@ -9,7 +9,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      z-index: 10000; /* Ensure the widget is above other content */
+      z-index: 2147483647; /* Maximum z-index value */
     }
     .lhw-widget button {
       background-color: #4CAF50;
@@ -30,10 +30,10 @@
       padding: 20px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
-      z-index: 10001; /* Ensure the popup is above other content */
-      width: 90%; /* Ensure the popup is wide enough */
-      max-width: 500px; /* Limit the maximum width */
-      box-sizing: border-box; /* Include padding and border in the element's total width and height */
+      z-index: 2147483647; /* Maximum z-index value */
+      width: 90%;
+      max-width: 500px;
+      box-sizing: border-box;
     }
     .lhw-widget .popup.active {
       display: block;
@@ -47,7 +47,7 @@
       margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      box-sizing: border-box; /* Ensure the input fits within the popup */
+      box-sizing: border-box;
     }
     .lhw-widget .popup .btn {
       padding: 10px 20px;
