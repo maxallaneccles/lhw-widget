@@ -63,6 +63,10 @@
       background-color: #4CAF50;
       color: white;
     }
+    .lhw-blur {
+      filter: blur(5px);
+      transition: filter 0.3s;
+    }
   `;
   document.head.append(style);
 
@@ -109,9 +113,11 @@
     popupTitle.textContent = title;
     popupInput.value = '';
     popup.classList.add('active');
+    document.body.classList.add('lhw-blur');
   }
 
   function closePopup() {
     popup.classList.remove('active');
+    document.body.classList.remove('lhw-blur');
   }
 })();
