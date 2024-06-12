@@ -1,17 +1,17 @@
 (function() {
   const style = document.createElement('style');
   style.textContent = `
-    .lhw-widget-container {
+    .lhw-widget-button {
       position: fixed;
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
-      z-index: 2147483647; /* Maximum z-index value */
       display: flex;
       flex-direction: column;
       gap: 10px;
+      z-index: 2147483647; /* Maximum z-index value */
     }
-    .lhw-widget-container button {
+    .lhw-widget-button button {
       background-color: #4CAF50;
       color: white;
       border: none;
@@ -20,7 +20,7 @@
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
-    .lhw-widget-container .popup {
+    .lhw-popup {
       display: none;
       position: fixed;
       top: 50%;
@@ -35,13 +35,13 @@
       max-width: 500px;
       box-sizing: border-box;
     }
-    .lhw-widget-container .popup.active {
+    .lhw-popup.active {
       display: block;
     }
-    .lhw-widget-container .popup h2 {
+    .lhw-popup h2 {
       margin-bottom: 10px;
     }
-    .lhw-widget-container .popup input {
+    .lhw-popup input {
       width: 100%;
       padding: 10px;
       margin-bottom: 10px;
@@ -49,44 +49,48 @@
       border-radius: 5px;
       box-sizing: border-box;
     }
-    .lhw-widget-container .popup .btn {
+    .lhw-popup .btn {
       padding: 10px 20px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
-    .lhw-widget-container .popup .btn-secondary {
+    .lhw-popup .btn-secondary {
       background-color: #ccc;
       margin-right: 10px;
     }
-    .lhw-widget-container .popup .btn-primary {
+    .lhw-popup .btn-primary {
       background-color: #4CAF50;
       color: white;
     }
   `;
   document.head.append(style);
 
-  const widget = document.createElement('div');
-  widget.className = 'lhw-widget-container';
-  widget.innerHTML = `
+  const buttonsContainer = document.createElement('div');
+  buttonsContainer.className = 'lhw-widget-button';
+  buttonsContainer.innerHTML = `
     <button id="loveBtn">❤️</button>
     <button id="hateBtn">😡</button>
     <button id="wantBtn">🎁</button>
-    <div id="popup" class="popup">
-      <h2 id="popupTitle"></h2>
-      <input type="text" id="popupInput" placeholder="Your feedback...">
-      <div>
-        <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
-        <button class="btn btn-primary" id="submitBtn">Submit</button>
-      </div>
+  `;
+  document.body.append(buttonsContainer);
+
+  const popup = document.createElement('div');
+  popup.id = 'popup';
+  popup.className = 'lhw-popup';
+  popup.innerHTML = `
+    <h2 id="popupTitle"></h2>
+    <input type="text" id="popupInput" placeholder="Your feedback...">
+    <div>
+      <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
+      <button class="btn btn-primary" id="submitBtn">Submit</button>
     </div>
   `;
-  document.body.append(widget);
+  document.body.append(popup);
 
   const loveBtn = document.getElementById('loveBtn');
   const hateBtn = document.getElementById('hateBtn');
   const wantBtn = document.getElementById('wantBtn');
-  const popup = document.getElementById('popup');
   const popupTitle = document.getElementById('popupTitle');
   const popupInput = document.getElementById('popupInput');
   const cancelBtn = document.getElementById('cancelBtn');
