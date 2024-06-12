@@ -1,17 +1,17 @@
 (function() {
   const style = document.createElement('style');
   style.textContent = `
-    .lhw-widget {
+    .lhw-widget-container {
       position: fixed;
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
+      z-index: 2147483647; /* Maximum z-index value */
       display: flex;
       flex-direction: column;
       gap: 10px;
-      z-index: 2147483647; /* Maximum z-index value */
     }
-    .lhw-widget button {
+    .lhw-widget-container button {
       background-color: #4CAF50;
       color: white;
       border: none;
@@ -20,7 +20,7 @@
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
-    .lhw-widget .popup {
+    .lhw-widget-container .popup {
       display: none;
       position: fixed;
       top: 50%;
@@ -35,13 +35,13 @@
       max-width: 500px;
       box-sizing: border-box;
     }
-    .lhw-widget .popup.active {
+    .lhw-widget-container .popup.active {
       display: block;
     }
-    .lhw-widget .popup h2 {
+    .lhw-widget-container .popup h2 {
       margin-bottom: 10px;
     }
-    .lhw-widget .popup input {
+    .lhw-widget-container .popup input {
       width: 100%;
       padding: 10px;
       margin-bottom: 10px;
@@ -49,17 +49,17 @@
       border-radius: 5px;
       box-sizing: border-box;
     }
-    .lhw-widget .popup .btn {
+    .lhw-widget-container .popup .btn {
       padding: 10px 20px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
-    .lhw-widget .popup .btn-secondary {
+    .lhw-widget-container .popup .btn-secondary {
       background-color: #ccc;
       margin-right: 10px;
     }
-    .lhw-widget .popup .btn-primary {
+    .lhw-widget-container .popup .btn-primary {
       background-color: #4CAF50;
       color: white;
     }
@@ -67,18 +67,17 @@
   document.head.append(style);
 
   const widget = document.createElement('div');
+  widget.className = 'lhw-widget-container';
   widget.innerHTML = `
-    <div class="lhw-widget">
-      <button id="loveBtn">❤️</button>
-      <button id="hateBtn">😡</button>
-      <button id="wantBtn">🎁</button>
-      <div id="popup" class="popup">
-        <h2 id="popupTitle"></h2>
-        <input type="text" id="popupInput" placeholder="Your feedback...">
-        <div>
-          <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
-          <button class="btn btn-primary" id="submitBtn">Submit</button>
-        </div>
+    <button id="loveBtn">❤️</button>
+    <button id="hateBtn">😡</button>
+    <button id="wantBtn">🎁</button>
+    <div id="popup" class="popup">
+      <h2 id="popupTitle"></h2>
+      <input type="text" id="popupInput" placeholder="Your feedback...">
+      <div>
+        <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="submitBtn">Submit</button>
       </div>
     </div>
   `;
