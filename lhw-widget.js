@@ -16,9 +16,11 @@
       color: white;
       border: none;
       padding: 10px;
-      border-radius: 50%;
+      border-radius: 5px;
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
     }
     .lhw-popup {
       display: none;
@@ -73,9 +75,9 @@
   const buttonsContainer = document.createElement('div');
   buttonsContainer.className = 'lhw-widget-button';
   buttonsContainer.innerHTML = `
-    <button id="loveBtn">❤️</button>
-    <button id="hateBtn">😡</button>
-    <button id="wantBtn">🎁</button>
+    <button id="loveBtn">Love</button>
+    <button id="hateBtn">Hate</button>
+    <button id="wantBtn">Want</button>
   `;
   document.body.append(buttonsContainer);
 
